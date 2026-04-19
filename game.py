@@ -19,6 +19,10 @@ MAGENTA = "\033[95m"
 RED = "\033[91m"
 BLUE = "\033[94m"
 
+HERO_BUTTERFLY = "Бабочка Луна"
+HERO_ANT = "Муравей Тик"
+HERO_DRAGONFLY = "Стрекоза Нова"
+
 
 def clear_screen() -> None:
     print("\033[2J\033[H", end="")
@@ -85,15 +89,15 @@ def mission_briefing(name: str) -> None:
         [
             f"{BOLD}Сюжет:{RESET} В волшебном саду пропал Радужный Нектар.",
             "Без него цветы грустят, а светлячки не светятся ночью.",
-            f"{name}, тебе помогут 3 насекомых-друга:",
-            "Пчёлка Бип • Божья коровка Лаки • Жук Рокки",
+            f"{name}, тебе помогут 3 героя-команды:",
+            f"{HERO_BUTTERFLY} • {HERO_ANT} • {HERO_DRAGONFLY}",
         ]
     )
     print()
 
 
 def challenge_honey() -> int:
-    slow_print(f"{BLUE}Пчёлка Бип:{RESET} Нужно собрать правильный ритм крыльев!")
+    slow_print(f"{MAGENTA}{HERO_BUTTERFLY}:{RESET} Нужно собрать правильный ритм крыльев!")
     rhythm = random.choice(["ab", "ba", "aab"])
     mapping = {"a": "ЖЖ", "b": "Ж-Ж"}
     hint = "  ".join(mapping[ch] for ch in rhythm)
@@ -106,32 +110,32 @@ def challenge_honey() -> int:
     clear_screen()
     answer = input("Код ритма: ").strip().lower()
     if answer == rhythm:
-        slow_print(f"{GREEN}Идеально! Бип даёт тебе каплю золотого мёда.{RESET}")
+        slow_print(f"{GREEN}Идеально! {HERO_BUTTERFLY} даёт тебе каплю золотого мёда.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Почти! Бип всё равно верит в тебя.{RESET}")
+    slow_print(f"{YELLOW}Почти! {HERO_BUTTERFLY} всё равно верит в тебя.{RESET}")
     return 0
 
 
 def challenge_spots() -> int:
-    slow_print(f"{RED}Лаки:{RESET} Помоги посчитать пятнышки на моих друзьях!")
+    slow_print(f"{BLUE}{HERO_ANT}:{RESET} Помоги посчитать припасы команды!")
     nums = [random.randint(1, 5) for _ in range(3)]
     total = sum(nums)
     draw_frame([
-        f"Коровка 1: {nums[0]} пятн.",
-        f"Коровка 2: {nums[1]} пятн.",
-        f"Коровка 3: {nums[2]} пятн.",
-        "Сколько всего пятнышек?",
+        f"Лист 1: {nums[0]} зёрнышек.",
+        f"Лист 2: {nums[1]} зёрнышек.",
+        f"Лист 3: {nums[2]} зёрнышек.",
+        "Сколько всего зёрнышек?",
     ])
     raw = input("Твой ответ: ").strip()
     if raw.isdigit() and int(raw) == total:
-        slow_print(f"{GREEN}Верно! Лаки даёт тебе алую искорку.{RESET}")
+        slow_print(f"{GREEN}Верно! {HERO_ANT} даёт тебе алую искорку.{RESET}")
         return 1
     slow_print(f"{YELLOW}Ничего, математика тренируется каждый день!{RESET}")
     return 0
 
 
 def challenge_tunnel() -> int:
-    slow_print(f"{MAGENTA}Жук Рокки:{RESET} Я знаю короткий путь по тоннелям.")
+    slow_print(f"{CYAN}{HERO_DRAGONFLY}:{RESET} Я знаю короткий путь по воздушным тоннелям.")
     draw_frame([
         "Выбери безопасный тоннель:",
         "1) Тоннель с листиком",
@@ -141,14 +145,14 @@ def challenge_tunnel() -> int:
     ])
     answer = input("Номер тоннеля: ").strip()
     if answer == "3":
-        slow_print(f"{GREEN}Отличный выбор! Рокки даёт тебе кристалл росы.{RESET}")
+        slow_print(f"{GREEN}Отличный выбор! {HERO_DRAGONFLY} даёт тебе кристалл росы.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Рокки улыбается: иногда лучше проверить ещё раз!{RESET}")
+    slow_print(f"{YELLOW}{HERO_DRAGONFLY} улыбается: иногда лучше проверить ещё раз!{RESET}")
     return 0
 
 
 def challenge_colors() -> int:
-    slow_print(f"{CYAN}Гусеница Пикси:{RESET} Раскрась цветок по коду 90-х!")
+    slow_print(f"{MAGENTA}{HERO_BUTTERFLY}:{RESET} Раскрась цветок по коду 90-х!")
     code = random.choice(["кзж", "зжк", "жкз"])
     legend = "к=красный, з=зелёный, ж=жёлтый"
     draw_frame([
@@ -161,40 +165,40 @@ def challenge_colors() -> int:
     if answer == code:
         slow_print(f"{GREEN}Точно! Цветок засиял пиксельными огоньками.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Неплохо! Пикси говорит: можно потренироваться ещё.{RESET}")
+    slow_print(f"{YELLOW}Неплохо! {HERO_BUTTERFLY} говорит: можно потренироваться ещё.{RESET}")
     return 0
 
 
 def challenge_dew_math() -> int:
-    slow_print(f"{BLUE}Муравей Тик:{RESET} Помоги посчитать капли росы для друзей.")
+    slow_print(f"{BLUE}{HERO_ANT}:{RESET} Помоги посчитать капли росы для друзей.")
     a = random.randint(1, 5)
     b = random.randint(1, 5)
     draw_frame([
-        f"У Тика {a} капли росы.",
-        f"Бип принесла ещё {b} капли.",
+        f"У {HERO_ANT} {a} капли росы.",
+        f"{HERO_BUTTERFLY} принесла ещё {b} капли.",
         "Сколько стало всего?",
     ])
     answer = input("Ответ: ").strip()
     if answer.isdigit() and int(answer) == a + b:
-        slow_print(f"{GREEN}Верно! Тик даёт тебе серебряную каплю.{RESET}")
+        slow_print(f"{GREEN}Верно! {HERO_ANT} даёт тебе серебряную каплю.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Почти! Тик всё равно рад твоей помощи.{RESET}")
+    slow_print(f"{YELLOW}Почти! {HERO_ANT} всё равно рад твоей помощи.{RESET}")
     return 0
 
 
 def challenge_echo() -> int:
-    slow_print(f"{MAGENTA}Светлячок Эхо:{RESET} Повтори световой сигнал.")
+    slow_print(f"{CYAN}{HERO_DRAGONFLY}:{RESET} Повтори световой сигнал.")
     signal = random.choice(["*.*", "**.", ".**"])
     draw_frame([
-        "Сигнал светлячка:",
+        "Сигнал стрекозы:",
         signal,
         "Введи сигнал символами * и .",
     ])
     answer = input("Сигнал: ").strip()
     if answer == signal:
-        slow_print(f"{GREEN}Отлично! Эхо включает ночной маячок.{RESET}")
+        slow_print(f"{GREEN}Отлично! {HERO_DRAGONFLY} включает ночной маячок.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Сигнал почти совпал. Эхо подмигивает и ждёт реванш!{RESET}")
+    slow_print(f"{YELLOW}Сигнал почти совпал. {HERO_DRAGONFLY} подмигивает и ждёт реванш!{RESET}")
     return 0
 
 
@@ -238,11 +242,11 @@ def level1_garden(name: str) -> int:
 
 
 def challenge_reeds() -> int:
-    slow_print(f"{BLUE}Стрекоза Зип:{RESET} Нужно перелететь по кувшинкам до камыша!")
+    slow_print(f"{CYAN}{HERO_DRAGONFLY}:{RESET} Нужно перелететь по кувшинкам до камыша!")
     pads = random.randint(4, 8)
     draw_frame([
         f"До камыша {pads} кувшинок.",
-        "Зип прыгает через 2 кувшинки за раз.",
+        f"{HERO_DRAGONFLY} прыгает через 2 кувшинки за раз.",
         "Сколько прыжков нужно, чтобы долететь?",
         "Подсказка: округляй вверх, если осталось 1.",
     ])
@@ -251,12 +255,12 @@ def challenge_reeds() -> int:
     if answer.isdigit() and int(answer) == correct:
         slow_print(f"{GREEN}Супер! Ты точно рассчитал(а) маршрут.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Неплохо! Зип всё равно благодарит за помощь.{RESET}")
+    slow_print(f"{YELLOW}Неплохо! {HERO_DRAGONFLY} всё равно благодарит за помощь.{RESET}")
     return 0
 
 
 def challenge_wind() -> int:
-    slow_print(f"{CYAN}Стрекоза Вью:{RESET} Ветер меняет направление!")
+    slow_print(f"{CYAN}{HERO_DRAGONFLY}:{RESET} Ветер меняет направление!")
     sequence = random.choice(["лево право право", "право лево право", "лево лево право"])
     draw_frame([
         "Запомни путь полёта на 3 секунды:",
@@ -269,14 +273,14 @@ def challenge_wind() -> int:
     answer = input("Код пути: ").strip().lower()
     correct = "".join(word[0] for word in sequence.split())
     if answer == correct:
-        slow_print(f"{GREEN}Идеально! Вью даёт тебе Синий Ветерок.{RESET}")
+        slow_print(f"{GREEN}Идеально! {HERO_DRAGONFLY} даёт тебе Синий Ветерок.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Почти! Вью подбадривает тебя на новый полёт.{RESET}")
+    slow_print(f"{YELLOW}Почти! {HERO_DRAGONFLY} подбадривает тебя на новый полёт.{RESET}")
     return 0
 
 
 def challenge_froggy() -> int:
-    slow_print(f"{MAGENTA}Стрекоза Нова:{RESET} Лягушонок охраняет короткую тропу.")
+    slow_print(f"{CYAN}{HERO_DRAGONFLY}:{RESET} Лягушонок охраняет короткую тропу.")
     safe = random.choice(["1", "2", "3"])
     clue = {
         "1": "Безопасный лист не справа от красного.",
@@ -292,12 +296,12 @@ def challenge_froggy() -> int:
     if answer == safe:
         slow_print(f"{GREEN}Отлично! Лягушонок пропускает тебя дальше.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Нова говорит: бывает, пробуем ещё в следующий раз!{RESET}")
+    slow_print(f"{YELLOW}{HERO_DRAGONFLY} говорит: бывает, пробуем ещё в следующий раз!{RESET}")
     return 0
 
 
 def challenge_boost() -> int:
-    slow_print(f"{BLUE}Стрекоза Турбо:{RESET} Включи ускорение точно по таймеру!")
+    slow_print(f"{CYAN}{HERO_DRAGONFLY}:{RESET} Включи ускорение точно по таймеру!")
     target = random.choice(["3", "4", "5"])
     draw_frame([
         "Когда скажу 'СТАРТ', мысленно считай секунды.",
@@ -317,7 +321,7 @@ def challenge_boost() -> int:
 
 
 def challenge_bubbles() -> int:
-    slow_print(f"{CYAN}Стрекоза Блик:{RESET} Лопаем пузырьки в правильном порядке.")
+    slow_print(f"{MAGENTA}{HERO_BUTTERFLY}:{RESET} Лопаем пузырьки в правильном порядке.")
     order = random.choice(["123", "231", "312"])
     draw_frame([
         "Порядок пузырьков:",
@@ -326,14 +330,14 @@ def challenge_bubbles() -> int:
     ])
     answer = input("Порядок: ").strip()
     if answer == order:
-        slow_print(f"{GREEN}Точно! Блик дарит тебе Лазурный Ключ.{RESET}")
+        slow_print(f"{GREEN}Точно! {HERO_BUTTERFLY} дарит тебе Лазурный Ключ.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Почти! Блик хвалит за внимательность.{RESET}")
+    slow_print(f"{YELLOW}Почти! {HERO_BUTTERFLY} хвалит за внимательность.{RESET}")
     return 0
 
 
 def challenge_stars() -> int:
-    slow_print(f"{MAGENTA}Стрекоза Люма:{RESET} Сколько звёзд отражается в пруду?")
+    slow_print(f"{BLUE}{HERO_ANT}:{RESET} Сколько звёзд отражается в пруду?")
     stars = [random.randint(1, 3) for _ in range(4)]
     total = sum(stars)
     draw_frame([
@@ -345,9 +349,9 @@ def challenge_stars() -> int:
     ])
     answer = input("Твой ответ: ").strip()
     if answer.isdigit() and int(answer) == total:
-        slow_print(f"{GREEN}Верно! Люма включает Большой Маяк.{RESET}")
+        slow_print(f"{GREEN}Верно! {HERO_ANT} включает Большой Маяк.{RESET}")
         return 1
-    slow_print(f"{YELLOW}Люма: хороший старт, в следующий раз точно получится!{RESET}")
+    slow_print(f"{YELLOW}{HERO_ANT}: хороший старт, в следующий раз точно получится!{RESET}")
     return 0
 
 
@@ -356,7 +360,8 @@ def level2_pond(name: str) -> int:
     draw_frame([
         f"{BOLD}Уровень 2: Пруд стрекоз{RESET}",
         "Вечереет, и над водой вспыхивают неоновые блики.",
-        "Команда стрекоз просит восстановить Маяк Лилии.",
+        f"Команда {HERO_BUTTERFLY}, {HERO_ANT} и {HERO_DRAGONFLY}",
+        "просит восстановить Маяк Лилии.",
         f"{name}, собери 6 небесных символов полёта!",
     ])
     points = 0
@@ -422,7 +427,7 @@ def main() -> None:
         clear_screen()
         main()
     else:
-        slow_print("Спасибо за игру! Передай Мие привет от команды жуков 🐞")
+        slow_print("Спасибо за игру! Передай Мие привет от команды героев 🐞")
 
 
 if __name__ == "__main__":
