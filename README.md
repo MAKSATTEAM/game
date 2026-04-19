@@ -1,29 +1,97 @@
-# Mia's Bug Quest (Terminal Game)
+# 🐞 Mia's Bug Garden Adventure
+### 8-Bit Terminal Game — Pet Project by Mia & Papa
 
-Мини-игра для терминала в стилистике 8-bit / 90-х, которую можно развивать вместе с ребёнком.
-
-## Что уже есть
-- пиксельный ASCII-заголовок;
-- сюжет для ребёнка 6 лет (доброе приключение в саду насекомых);
-- 3 коротких мини-испытания (память, счёт, простая логика);
-- несколько концовок по результату.
-
-## Как запустить
-```bash
-python3 game.py
+```
+ ____  _   _  ____      ___   ____  ____  ____  _   _
+|  _ \| | | |/ ___|    / _ \ |  _ \|  _ \| ___|| \ | |
+| |_) | | | | |  _    / /_\ \| |_) | | | |  _|  \  | |
+|  _ <| |_| | |_| |  /  ___  \  _ <| |_| | |___ |  \ |
+|_| \_\\___/ \____|  /_/     \_\___/|____/|_____||_| \_|
+         * M A G I C   G A R D E N *
 ```
 
-## Идеи, с чего продолжить
-1. Добавить новых героев (например, стрекозу-пилота).
-2. Добавить систему уровней: Лес, Пруд, Ночной сад.
-3. Сохранять рекорд в `save.json`.
-4. Добавить выбор сложности (6+, 8+, 10+).
-5. Сделать кооперативный режим: родитель + ребёнок по очереди.
+---
 
-## Как работать с дочкой Мией
-Можно просить агента простыми фразами, например:
-- "Добавь новый уровень с улиткой"
-- "Сделай игру смешнее и добавь шутки"
-- "Добавь музыку в стиле 8-bit (текстом-пищалкой)"
-- "Добавь магазин крыльев за звёзды"
+## 🌸 The Story
 
+Little ladybug **Mia** woke up one morning and discovered all her friends had disappeared!
+
+- 🐝 **Bee Buzzy** is lost in the Sunny Meadow
+- 🦋 **Butterfly Bella** flew into the Flower Garden
+- 🦗 **Cricket Charlie** is hiding in the Evening Garden
+
+Help Mia find all three friends and bring them home!
+
+---
+
+## 🎮 How to Play
+
+### Start the game
+```bash
+python3 bug_adventure.py
+```
+
+### Controls
+| Key | Action |
+|-----|--------|
+| ⬆️ Arrow Up | Move up |
+| ⬇️ Arrow Down | Move down |
+| ⬅️ Arrow Left | Move left |
+| ➡️ Arrow Right | Move right |
+| `ENTER` | Confirm / Next screen |
+| `Q` | Quit |
+
+### Map symbols
+| Symbol | Meaning |
+|--------|---------|
+| `@` | Mia the ladybug (you!) |
+| `*` | Flower — collect for +10 points! |
+| `#` | Hedge wall — can't walk through |
+| `T` | Tree — can't walk through |
+| `W` | Spider web — slows you down! |
+| `B` | Bee Buzzy — find him! |
+| `F` | Butterfly Bella — find her! |
+| `C` | Cricket Charlie — find him! |
+
+---
+
+## 🏆 Levels
+
+1. **Sunny Meadow** — Easy. Find Bee Buzzy!
+2. **Flower Garden** — Medium. Find Butterfly Bella!
+3. **Evening Garden** — Hard. Find Cricket Charlie!
+
+---
+
+## 📋 Requirements
+
+- Python 3.6 or newer
+- Works on: Linux, macOS, Windows (via WSL or Windows Terminal)
+- No extra packages needed — uses Python's built-in `curses` library
+
+---
+
+## 🛠️ Project structure
+
+```
+bug-garden/
+├── bug_adventure.py    ← The whole game (one file!)
+└── README.md           ← This file
+```
+
+---
+
+## 💡 Ideas for future updates
+
+Mia can request new features by typing them here! Ideas so far:
+
+- [ ] Add more levels
+- [ ] Add a spider enemy that moves!
+- [ ] Add sound effects (terminal beeps)
+- [ ] Add a high score table
+- [ ] Add a map editor so Mia can design her own levels
+- [ ] Add a day/night cycle
+
+---
+
+*Made with ❤️ by Mia & Papa*
