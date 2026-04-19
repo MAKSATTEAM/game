@@ -19,6 +19,10 @@ MAGENTA = "\033[95m"
 RED = "\033[91m"
 BLUE = "\033[94m"
 
+HERO_BUTTERFLY = "Бабочка Луна"
+HERO_ANT = "Муравей Тик"
+HERO_DRAGONFLY = "Стрекоза Нова"
+
 
 def clear_screen() -> None:
     print("\033[2J\033[H", end="")
